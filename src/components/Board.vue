@@ -3,7 +3,9 @@
     <h1>{{ msg }}</h1>
 
     <div id="board">
-      <Column/>
+      <Column name="To Do"/>
+      <Column name="Doing"/>
+      <Column name="Done"/>
     </div>
   </div>
 </template>

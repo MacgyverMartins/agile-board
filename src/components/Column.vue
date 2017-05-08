@@ -1,7 +1,11 @@
 <template>
-  <div id="todo" class="section">
-    <h1>To Do</h1>
-    <Card/>
+  <div :id="name" class="section">
+    <h1>{{name}}</h1>
+    <Card task="Create a App"/>
+    <Card task="Make a Macgyver"/>
+    <Card task="Change URL"/>
+    <Card task="Change URL"/>
+    <Card task=""/>
   </div>
 </template>
 
@@ -10,8 +14,13 @@ import Card from '@/components/Card';
 
 export default {
   name: 'column',
+  props: ['name'],
   components: { Card },
   mounted() {
+    function ola(name) {
+      return name;
+    }
+    ola();
   },
   data() {
     return {

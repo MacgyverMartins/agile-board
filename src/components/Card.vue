@@ -1,11 +1,13 @@
 <template>
-  <div id="c2" class="card">Make Killer App</div>
+  <!--<div id="c2" class="card">Make Killer App</div>-->
+  <div id="c2" class="card">{{task || 'Sem nome'}}</div>
 </template>
 
 <script>
 
 export default {
   name: 'card',
+  props: ['task'],
   mounted() {
   },
   data() {
