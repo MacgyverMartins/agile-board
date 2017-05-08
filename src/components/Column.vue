@@ -1,5 +1,5 @@
 <template>
-  <div :id="name" class="section">
+  <div :id="columnId" class="section">
     <h1>{{name}}</h1>
     <Card task="Create a App"/>
     <Card task="Make a Macgyver"/>
@@ -11,19 +11,18 @@
 
 <script>
 import Card from '@/components/Card';
+import slugfy from '@/utils/slugfy';
 
 export default {
   name: 'column',
   props: ['name'],
-  components: { Card },
+  components: { Card, slugfy },
   mounted() {
-    function ola(name) {
-      return name;
-    }
-    ola();
+    console.log('slugfy', slugfy(' To Do + Vc @@ oi'));
   },
   data() {
     return {
+      columnId: slugfy(this.name),
       msg: 'Welcome to Agile Board',
     };
   },
