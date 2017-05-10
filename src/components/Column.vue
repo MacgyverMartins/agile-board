@@ -1,11 +1,7 @@
 <template>
   <div :id="columnId" class="section">
     <h1>{{name}}</h1>
-    <Card task="Create a App"/>
-    <Card task="Make a Macgyver"/>
-    <Card task="Change URL"/>
-    <Card task="Change URL"/>
-    <Card task=""/>
+    <Card v-for="i in list" :name="i.name"/>
   </div>
 </template>
 
@@ -15,15 +11,23 @@ import slugfy from '@/utils/slugfy';
 
 export default {
   name: 'column',
-  props: ['name'],
+  props: ['name', 'cardlist'],
   components: { Card, slugfy },
   mounted() {
-    console.log('slugfy', slugfy(' To Do + Vc @@ oi'));
+    const self = this;
+    this.$el.ondragenter = function () {
+      // console.log('column dragenter', e);
+      self.$el.classList.add('droppable');
+    };
+    this.$el.ondragleave = function () {
+      // console.log('column dragenter', e);
+      self.$el.classList.remove('droppable');
+    };
   },
   data() {
     return {
       columnId: slugfy(this.name),
-      msg: 'Welcome to Agile Board',
+      list: (this.cardlist) ? this.cardlist : [{ name: 'Macgyver' }, { name: 'leticia' }],
     };
   },
 };
@@ -33,7 +37,7 @@ export default {
 <style scoped>
 .section {
   display: table-cell;
-  margin: 0;
+  margin: 0 auto;
   border: 1px solid #666;
   padding: 5px;
   width: 300px;
@@ -47,5 +51,8 @@ export default {
   padding: 0;
   font-size: 12pt;
   text-align: center;
+}
+.section.droppable {
+  background-color: red;
 }
 </style>

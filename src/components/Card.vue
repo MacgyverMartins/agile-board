@@ -1,18 +1,25 @@
 <template>
   <!--<div id="c2" class="card">Make Killer App</div>-->
-  <div id="c2" class="card">{{task || 'Sem nome'}}</div>
+  <div :id="cardId" draggable="true" class="card">
+    {{name || 'Sem nome'}}
+  </div>
 </template>
 
 <script>
+import slugfy from '@/utils/slugfy';
 
 export default {
   name: 'card',
-  props: ['task'],
+  props: ['name'],
+  components: { slugfy },
   mounted() {
+    this.$el.ondragstart = function (e) {
+      console.log('card dragstart', e);
+    };
   },
   data() {
     return {
-      msg: 'Welcome to Agile Board',
+      cardId: slugfy(this.name),
     };
   },
 };

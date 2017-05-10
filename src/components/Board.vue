@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="board">
     <h1>{{ msg }}</h1>
 
     <div id="board">
@@ -30,7 +30,7 @@ export default {
 <style scoped>
 #board {
   display: table;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   border-spacing: 5px;
 }
