@@ -16,6 +16,9 @@ export default {
     this.$el.ondragstart = function (e) {
       console.log('card dragstart', e);
     };
+    this.$el.ondragend = function (e) {
+      console.log('card dragstart', e);
+    };
   },
   data() {
     return {
