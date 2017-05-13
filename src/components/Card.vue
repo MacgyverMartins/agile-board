@@ -21,7 +21,6 @@ export default {
   components: { slugfy },
   data() {
     return {
-      // cardId: slugfy(this.name),
       cardId: 'mac',
     };
   },
