@@ -1,7 +1,10 @@
 <template>
   <div :id="columnId" class="section">
     <h1>{{name}}</h1>
-    <Card v-for="i in list" :name="i.name"/>
+    <Card v-for="i in cardList" :name="i.name"/>
+    <div>
+      <button type="button" v-on:click="addNewTask">Add</button>
+    </div>
   </div>
 </template>
 
@@ -11,24 +14,30 @@ import slugfy from '@/utils/slugfy';
 
 export default {
   name: 'column',
-  props: ['name', 'cardlist'],
+  props: ['name', 'cardList'],
   components: { Card, slugfy },
   mounted() {
-    const self = this;
-    this.$el.ondragenter = function () {
+    console.log('props', this.$props);
+   // const self = this;
+//    this.$el.ondragenter = function () {
       // console.log('column dragenter', e);
-      self.$el.classList.add('droppable');
-    };
-    this.$el.ondragleave = function () {
+ //     self.$el.classList.add('droppable');
+  //  };
+   // this.$el.ondragleave = function () {
       // console.log('column dragenter', e);
-      self.$el.classList.remove('droppable');
-    };
+    //  self.$el.classList.remove('droppable');
+   // };
   },
   data() {
     return {
       columnId: slugfy(this.name),
-      list: (this.cardlist) ? this.cardlist : [{ name: 'Macgyver' }, { name: 'leticia' }],
     };
+  },
+  methods: {
+    addNewTask() {
+      console.log(this.cardList);
+      this.cardList.push({ name: 'new task' });
+    },
   },
 };
 </script>

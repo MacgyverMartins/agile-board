@@ -3,7 +3,7 @@
     <h1>{{ msg }}</h1>
 
     <div id="board">
-      <Column name="To Do"/>
+      <Column name="To Do" :cardList="todo"/>
       <Column name="Doing"/>
       <Column name="Done"/>
     </div>
@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       msg: 'Welcome to Agile Board',
+      todo: [{ name: 'Teste 1' }, { name: 'Teste 2' }],
     };
   },
 };
