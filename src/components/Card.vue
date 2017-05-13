@@ -1,7 +1,7 @@
 <template>
   <div :id="cardId" draggable="true" class="card">
     <h2 class="title" contenteditable="true" v-on:blur="changed" v-on:paste="changed">
-      {{name || 'Sem nome'}}
+      {{name}}
     </h2>
   </div>
 </template>
@@ -11,19 +11,25 @@ import slugfy from '@/utils/slugfy';
 
 export default {
   name: 'card',
-  props: ['name'],
+  props: {
+    name: {
+      type: String,
+      default: 'nova task',
+      required: true,
+    },
+  },
   components: { slugfy },
   data() {
     return {
-      cardId: slugfy(this.name),
-      cardName: this.name,
+      // cardId: slugfy(this.name),
+      cardId: 'mac',
     };
   },
   mounted() {},
-
   methods: {
     changed() {
-      this.cardName = this.$el.innerText.trim();
+      const name = this.$el.innerText.trim();
+      console.log('name changed to:', name);
     },
   },
 };

@@ -29,7 +29,7 @@ export default {
       for (let i = 0; i < this.cardList.length; i += 1) {
         console.log('cardLIsta item', this.cardList[i].name);
       }
-      this.cardList.push({ name: 'new task' });
+      this.cardList.push({});
     },
   },
 };
