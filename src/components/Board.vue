@@ -4,8 +4,8 @@
 
     <div id="board">
       <Column name="To Do" :cardList="todo"/>
-      <Column name="Doing"/>
-      <Column name="Done"/>
+      <Column name="Doing" :cardList="doing"/>
+      <Column name="Done" :cardList="done"/>
     </div>
   </div>
 </template>
@@ -22,6 +22,8 @@ export default {
     return {
       msg: 'Welcome to Agile Board',
       todo: [{ name: 'Teste 1' }, { name: 'Teste 2' }],
+      doing: [],
+      done: [],
     };
   },
 };
