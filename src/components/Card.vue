@@ -1,7 +1,8 @@
 <template>
-  <!--<div id="c2" class="card">Make Killer App</div>-->
   <div :id="cardId" draggable="true" class="card">
-    {{name || 'Sem nome'}}
+    <h2 class="title" contenteditable="true" v-on:blur="changed" v-on:paste="changed">
+      {{name || 'Sem nome'}}
+    </h2>
   </div>
 </template>
 
@@ -12,18 +13,18 @@ export default {
   name: 'card',
   props: ['name'],
   components: { slugfy },
-  mounted() {
-    this.$el.ondragstart = function (e) {
-      console.log('card dragstart', e);
-    };
-    this.$el.ondragend = function (e) {
-      console.log('card dragstart', e);
-    };
-  },
   data() {
     return {
       cardId: slugfy(this.name),
+      cardName: this.name,
     };
+  },
+  mounted() {},
+
+  methods: {
+    changed() {
+      this.cardName = this.$el.innerText.trim();
+    },
   },
 };
 </script>
@@ -43,6 +44,16 @@ export default {
   text-align: center;
   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   box-shadow: 2px 2px 2px #eee;
+  box-sizing: border-box;
 }
-
+.title {
+  box-sizing: border-box;
+  font-size: 17px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.title:hover {
+  background: #ecec78;
+  cursor: pointer;
+}
 </style>

@@ -18,15 +18,6 @@ export default {
   components: { Card, slugfy },
   mounted() {
     console.log('props', this.$props);
-   // const self = this;
-//    this.$el.ondragenter = function () {
-      // console.log('column dragenter', e);
- //     self.$el.classList.add('droppable');
-  //  };
-   // this.$el.ondragleave = function () {
-      // console.log('column dragenter', e);
-    //  self.$el.classList.remove('droppable');
-   // };
   },
   data() {
     return {
@@ -35,7 +26,9 @@ export default {
   },
   methods: {
     addNewTask() {
-      console.log(this.cardList);
+      for (let i = 0; i < this.cardList.length; i += 1) {
+        console.log('cardLIsta item', this.cardList[i].name);
+      }
       this.cardList.push({ name: 'new task' });
     },
   },
